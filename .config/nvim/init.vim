@@ -7,7 +7,7 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'itchyny/lightline.vim'
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-fugitive'
@@ -15,6 +15,10 @@ Plug 'tpope/vim-fugitive'
 :call plug#end()
 
 " Theme
+
+" Gruvbox settings here
+let g:gruvbox_contrast_dark = "soft"
+
 autocmd vimenter * colorscheme gruvbox
 " -------------------------------------------------------------------------------------------------
 " coc.nvim default settings
@@ -30,15 +34,13 @@ set cmdheight=2
 set updatetime=300
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
-" always show signcolumns
-set signcolumn=yes
 
 set noerrorbells
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
-set nu
+set rnu
 set nowrap
 set smartcase
 set noswapfile
@@ -47,6 +49,37 @@ set incsearch
 set autoindent
 
 set background=dark
+
+" Some optimization stuff, use only if required
+" set lazyredraw
+"set synmaxcol=128
+"syntax sync minlines=64
+"set timeoutlen=1000
+"set ttimeoutlen=0
+
+
+"disable vim-go `gopls`
+let g:go_gopls_enabled = 0
+
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+let g:go_def_mapping_enabled = 0
+
+" Rust settings here
+let g:rustfmt_autosave = 1
+
+" Syntax highlighting for go
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_variable_assignments = 1
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -85,13 +118,6 @@ vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 nnoremap <silent> a :<C-u>NERDTreeToggle<CR>
-
-
-" disable vim-go :GoDef short cut (gd)
-" this is handled by LanguageClient [LC]
-let g:go_def_mapping_enabled = 0
-set number
-let g:rustfmt_autosave = 1
 
 " Set tab switching
 nnoremap <silent> q :tabprevious<CR>
