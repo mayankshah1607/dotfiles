@@ -117,8 +117,10 @@ nmap <leader>rn <Plug>(coc-rename)
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
+" NERDTree stuff
 nnoremap <silent> a :<C-u>NERDTreeToggle<CR>
-
+nnoremap <silent> nr :<C-u>NERDTreeRefreshRoot<CR>
 " Set tab switching
 nnoremap <silent> q :tabprevious<CR>
 nnoremap <silent> p :tabNext<CR>
+
