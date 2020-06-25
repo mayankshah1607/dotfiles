@@ -3,7 +3,7 @@ call plug#begin('~/.config/nvim')
 " Plugins
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'itchyny/lightline.vim'
