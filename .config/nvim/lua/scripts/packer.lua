@@ -13,6 +13,7 @@ return require('packer').startup(function(use)
 
     -- LSP
     use 'neovim/nvim-lspconfig'
+    use({"glepnir/lspsaga.nvim", branch = "main"})
 
     -- Auto completion
     use 'hrsh7th/nvim-cmp'
