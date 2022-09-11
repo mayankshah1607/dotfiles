@@ -14,3 +14,5 @@ vim.opt.wrap = false
 vim.g.mapleader = " "
 
 vim.o.autochdir = true
+
+vim.o.termguicolors = true

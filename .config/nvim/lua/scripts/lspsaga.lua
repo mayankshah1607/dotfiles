@@ -6,6 +6,9 @@ require("lspsaga").init_lsp_saga({
         split = "i",
         tabe = "t",
         quit = "<Esc>",
+    },
+    code_action_lightbulb = {
+        enable = false,
     }
 })
 
