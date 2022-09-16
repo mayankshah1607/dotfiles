@@ -15,8 +15,6 @@ vim.keymap.set("n", "tc", "<cmd>tabclose<cr>")
 -- Pane navigation
 vim.keymap.set("n", "<leader>w", "<C-w>")
 
--- NERDTree
-vim.keymap.set("n", "<leader>a", "<cmd>NERDTreeFind<cr>")
-vim.keymap.set("n", "a", "<cmd>NERDTreeToggle<cr>")
-
+-- Tree
+vim.keymap.set("n", "<leader>a", "<cmd>NvimTreeFindFileToggle<cr>")
 

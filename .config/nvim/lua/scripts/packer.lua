@@ -38,5 +38,6 @@ return require('packer').startup(function(use)
     use { "nvim-telescope/telescope-file-browser.nvim" }
     use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
     use 'ahmedkhalf/project.nvim'
-    use 'preservim/nerdtree'
+--    use 'preservim/nerdtree'
+    use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' }, tag = 'nightly' }
 end)
