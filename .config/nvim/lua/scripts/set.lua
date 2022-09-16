@@ -16,3 +16,8 @@ vim.g.mapleader = " "
 vim.o.autochdir = true
 
 vim.o.termguicolors = true
+
+vim.wo.cursorline = true
+
+vim.g.blamer_enabled = 1
+vim.g.blamer_relative_time = 1

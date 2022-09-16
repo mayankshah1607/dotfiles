@@ -11,12 +11,10 @@ return require('packer').startup(function(use)
     use 'folke/tokyonight.nvim'
     use 'folke/lsp-colors.nvim' -- provides compatibility for highlighting
     use 'kyazdani42/nvim-web-devicons'
-    use { "catppuccin/nvim", as = "catppuccin" }
 
     -- LSP
     use 'neovim/nvim-lspconfig'
     use({"glepnir/lspsaga.nvim", branch = "main"})
---    use {"folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons"}
     
     -- Auto completion
     use 'hrsh7th/nvim-cmp'
@@ -30,15 +28,15 @@ return require('packer').startup(function(use)
     use 'nvim-treesitter/nvim-treesitter'
     use 'windwp/nvim-autopairs'
     use 'ray-x/lsp_signature.nvim'
+    use 'tpope/vim-commentary'
+
+    -- git
+    use 'APZelos/blamer.nvim'
 
     -- Misc / productivity
-    use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = { {'nvim-lua/plenary.nvim'} }
-    }
+    use {'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { {'nvim-lua/plenary.nvim'}}}
+    use { "nvim-telescope/telescope-file-browser.nvim" }
+    use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
+    use 'ahmedkhalf/project.nvim'
     use 'preservim/nerdtree'
-    use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    }
 end)
