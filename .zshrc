@@ -88,7 +88,10 @@ alias ga=git add
 alias gc=git commit
 alias gp=git push
 
-# Go env
+# Kubernetes
+alias k=kubectl
+
+# Go
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/go
 export GOBIN=$GOPATH/bin
