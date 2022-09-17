@@ -26,6 +26,7 @@ return require('packer').startup(function(use)
 
     -- Syntax
     use 'nvim-treesitter/nvim-treesitter'
+    use 'nvim-treesitter/nvim-treesitter-context'
     use 'windwp/nvim-autopairs'
     use 'ray-x/lsp_signature.nvim'
     use 'tpope/vim-commentary'
@@ -38,6 +39,5 @@ return require('packer').startup(function(use)
     use { "nvim-telescope/telescope-file-browser.nvim" }
     use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
     use 'ahmedkhalf/project.nvim'
---    use 'preservim/nerdtree'
     use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' }, tag = 'nightly' }
 end)
