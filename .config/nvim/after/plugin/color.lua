@@ -5,3 +5,7 @@ vim.g.rehash256 = 1
 
 vim.cmd[[colorscheme tokyonight-storm]]
 
+-- Blankline
+vim.opt.termguicolors = true
+vim.cmd[[highlight IndentBlanklineContextChar guifg=#57618e gui=nocombine]]
+vim.cmd[[highlight IndentBlanklineChar guifg=#30364f gui=nocombine]]

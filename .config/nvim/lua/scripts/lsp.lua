@@ -44,6 +44,23 @@ require'lspconfig'.gopls.setup{
     end,
 }
 
+-- buf-language-server
+require'lspconfig'.bufls.setup{
+    capabilities = capabilities,
+    on_attach = function(_, bufnr)    
+    -- native LSP
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition)
+    vim.keymap.set("n", "gT", vim.lsp.buf.type_definition)
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references)
+    vim.keymap.set("n", "dp", vim.diagnostic.goto_prev)    
+    vim.keymap.set("n", "dn", vim.diagnostic.goto_next)    
+    vim.keymap.set("n", "<leader>re", vim.lsp.buf.rename, {buffer=0})
+    -- format on save
+    vim.api.nvim_command("au BufWritePost *.proto lua vim.lsp.buf.formatting()")
+    end,
+}
+
 -- lsp signature
 cfg = {}  -- add you config here
 require "lsp_signature".setup(cfg)

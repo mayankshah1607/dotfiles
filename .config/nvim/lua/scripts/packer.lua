@@ -7,15 +7,19 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- Color theme
+    -- Theme / colors / appearance
     use 'folke/tokyonight.nvim'
     use 'folke/lsp-colors.nvim' -- provides compatibility for highlighting
     use 'kyazdani42/nvim-web-devicons'
+    use 'williamboman/mason.nvim'
+    use 'lukas-reineke/indent-blankline.nvim'
 
     -- LSP
     use 'neovim/nvim-lspconfig'
     use({"glepnir/lspsaga.nvim", branch = "main"})
-    
+    use 'williamboman/mason-lspconfig.nvim'
+    use 'williamboman/mason.nvim'
+
     -- Auto completion
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
