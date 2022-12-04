@@ -11,7 +11,6 @@ return require('packer').startup(function(use)
     use 'folke/tokyonight.nvim'
     use 'folke/lsp-colors.nvim' -- provides compatibility for highlighting
     use 'kyazdani42/nvim-web-devicons'
-    use 'williamboman/mason.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
 
     -- LSP
@@ -44,4 +43,5 @@ return require('packer').startup(function(use)
     use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
     use 'ahmedkhalf/project.nvim'
     use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' }, tag = 'nightly' }
+    use {"akinsho/toggleterm.nvim", tag = "*"}
 end)
