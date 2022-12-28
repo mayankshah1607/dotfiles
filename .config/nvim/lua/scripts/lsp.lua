@@ -38,7 +38,7 @@ require'lspconfig'.gopls.setup{
     vim.keymap.set("n", "dn", vim.diagnostic.goto_next)    
     vim.keymap.set("n", "<leader>re", vim.lsp.buf.rename, {buffer=0})
     -- format on save
-    vim.api.nvim_command("au BufWritePost *.go lua vim.lsp.buf.formatting()")
+    vim.api.nvim_command("au BufWritePost *.go lua vim.lsp.buf.format({async=truE})")
     -- organize imports on save
     vim.api.nvim_command("au BufWritePost *.go lua org_imports(3000)")
     end,
