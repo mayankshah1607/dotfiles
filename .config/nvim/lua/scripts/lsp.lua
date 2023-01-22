@@ -1,5 +1,5 @@
 -- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 
 -- helper function so that `goimports` is run on write.
@@ -38,7 +38,7 @@ require'lspconfig'.gopls.setup{
     vim.keymap.set("n", "dn", vim.diagnostic.goto_next)    
     vim.keymap.set("n", "<leader>re", vim.lsp.buf.rename, {buffer=0})
     -- format on save
-    vim.api.nvim_command("au BufWritePost *.go lua vim.lsp.buf.format({async=truE})")
+    vim.api.nvim_command("au BufWritePost *.go lua vim.lsp.buf.format({async=true})")
     -- organize imports on save
     vim.api.nvim_command("au BufWritePost *.go lua org_imports(3000)")
     end,

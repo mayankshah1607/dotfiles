@@ -14,6 +14,12 @@ require("nvim-tree").setup({
         enable = true,
         update_root = true
     },
+    actions = {
+        change_dir = {
+            global = true
+        }
+    },
+    open_on_tab = true,
     renderer = {
         icons = {
             show = {

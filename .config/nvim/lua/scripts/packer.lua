@@ -36,6 +36,7 @@ return require('packer').startup(function(use)
 
     -- git
     use 'APZelos/blamer.nvim'
+    use 'akinsho/git-conflict.nvim'
 
     -- Misc / productivity
     use {'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { {'nvim-lua/plenary.nvim'}}}
