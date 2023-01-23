@@ -18,3 +18,7 @@ vim.keymap.set("n", "<leader>w", "<C-w>")
 -- Tree
 vim.keymap.set("n", "<leader>a", "<cmd>NvimTreeFindFileToggle<cr>")
 
+-- Git conflict
+vim.keymap.set('n', 'cp', '<Plug>(git-conflict-prev-conflict)')
+vim.keymap.set('n', 'cn', '<Plug>(git-conflict-next-conflict)')
+

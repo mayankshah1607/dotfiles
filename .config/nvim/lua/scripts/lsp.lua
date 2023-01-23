@@ -1,67 +1,79 @@
+-- Setup neovim lua configuration
+require('neodev').setup()
+
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-
--- helper function so that `goimports` is run on write.
--- temporary workaround, see: https://github.com/neovim/nvim-lspconfig/issues/115
-function org_imports(wait_ms)
-    local params = vim.lsp.util.make_range_params()
-    params.context = {only = {"source.organizeImports"}}
-    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
-    for _, res in pairs(result or {}) do
-        for _, r in pairs(res.result or {}) do
-            if r.edit then
-                vim.lsp.util.apply_workspace_edit(r.edit,"utf-16")
-            else
-                vim.lsp.buf.execute_command(r.command)
-            end
-        end
+-- LSP settings.
+--  This function gets run when an LSP connects to a particular buffer.
+local on_attach = function(_, bufnr)
+  -- NOTE: Remember that lua is a real programming language, and as such it is possible
+  -- to define small helper and utility functions so you don't have to repeat yourself
+  -- many times.
+  --
+  -- In this case, we create a function that lets us more easily define mappings specific
+  -- for LSP related items. It sets the mode, buffer and description for us each time.
+  local nmap = function(keys, func, desc)
+    if desc then
+      desc = 'LSP: ' .. desc
     end
+
+    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+  end
+
+  nmap('H', '<cmd>Lspsaga hover_doc<CR>', '[H]over docs')
+  nmap('fi', '<cmd>Lspsaga lsp_finder<CR>', '[f][i]nd references')
+  nmap('pd', '<cmd>Lspsaga peek_definition<CR>', '[p]eek [d]efinition')
+
+  nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+  nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+
+  nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+  nmap('gT', vim.lsp.buf.type_definition, '[G]oto [D]efinition')
+  nmap('gi', vim.lsp.buf.implementation, '[G]oto [i]mplementation')
+  nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+  nmap('dn', vim.diagnostic.goto_next, '[D]iagnostic [N]ext')
+  nmap('dp', vim.diagnostic.goto_prev, '[D]iagnostic [P]revious')
+  nmap('<leader>re', vim.lsp.buf.rename, 'Rename')
+
+  -- Create a command `:Format` local to the LSP buffer
+  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+    vim.lsp.buf.format()
+  end, { desc = 'Format current buffer with LSP' })
 end
 
--- gopls
-require'lspconfig'.gopls.setup{
-    capabilities = capabilities,
-    on_attach = function(_, bufnr)
-    -- keybindings
-    
-    -- lspsaga
-    vim.keymap.set("n", "H", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
-    vim.keymap.set("n", "fi", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
-    vim.keymap.set("n", "pd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
-    -- native LSP
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition)
-    vim.keymap.set("n", "gT", vim.lsp.buf.type_definition)
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
-    vim.keymap.set("n", "gr", vim.lsp.buf.references)
-    vim.keymap.set("n", "dp", vim.diagnostic.goto_prev)    
-    vim.keymap.set("n", "dn", vim.diagnostic.goto_next)    
-    vim.keymap.set("n", "<leader>re", vim.lsp.buf.rename, {buffer=0})
-    -- format on save
-    vim.api.nvim_command("au BufWritePost *.go lua vim.lsp.buf.format({async=true})")
-    -- organize imports on save
-    vim.api.nvim_command("au BufWritePost *.go lua org_imports(3000)")
-    end,
+-- Enable the following language servers
+--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+--
+--  Add any additional override configuration in the following tables. They will be passed to
+--  the `settings` field of the server config. You must look up that documentation yourself.
+local servers = {
+  -- clangd = {},
+  gopls = {},
+  bufls = {},
+  -- pyright = {},
+  -- rust_analyzer = {},
+  -- tsserver = {},
+
+  sumneko_lua = {
+    Lua = {
+      workspace = { checkThirdParty = false },
+      telemetry = { enable = false },
+    },
+  },
 }
 
--- buf-language-server
-require'lspconfig'.bufls.setup{
-    capabilities = capabilities,
-    on_attach = function(_, bufnr)    
-    -- native LSP
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition)
-    vim.keymap.set("n", "gT", vim.lsp.buf.type_definition)
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
-    vim.keymap.set("n", "gr", vim.lsp.buf.references)
-    vim.keymap.set("n", "dp", vim.diagnostic.goto_prev)    
-    vim.keymap.set("n", "dn", vim.diagnostic.goto_next)    
-    vim.keymap.set("n", "<leader>re", vim.lsp.buf.rename, {buffer=0})
-    -- format on save
-    vim.api.nvim_command("au BufWritePost *.proto lua vim.lsp.buf.formatting()")
-    end,
+local mason_lspconfig = require 'mason-lspconfig'
+
+mason_lspconfig.setup_handlers {
+  function(server_name)
+    require('lspconfig')[server_name].setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = servers[server_name]
+    }
+  end,
 }
 
--- lsp signature
-cfg = {}  -- add you config here
-require "lsp_signature".setup(cfg)
-
+-- Turn on lsp status information
+require('fidget').setup()

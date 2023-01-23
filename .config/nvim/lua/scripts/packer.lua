@@ -18,6 +18,8 @@ return require('packer').startup(function(use)
     use({"glepnir/lspsaga.nvim", branch = "main"})
     use 'williamboman/mason-lspconfig.nvim'
     use 'williamboman/mason.nvim'
+    use 'j-hui/fidget.nvim'
+    use 'jose-elias-alvarez/null-ls.nvim'
 
     -- Auto completion
     use 'hrsh7th/nvim-cmp'
@@ -45,4 +47,5 @@ return require('packer').startup(function(use)
     use 'ahmedkhalf/project.nvim'
     use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' }, tag = 'nightly' }
     use {"akinsho/toggleterm.nvim", tag = "*"}
+    use 'folke/neodev.nvim'
 end)
