@@ -81,7 +81,7 @@ require('fidget').setup()
 
 -- LSP formatting on save.
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = {"*.go", "*.rust"},
+  pattern = {"*.go", "*.rs"},
   callback = function()
     vim.lsp.buf.format()
   end,

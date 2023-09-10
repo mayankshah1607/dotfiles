@@ -19,7 +19,6 @@ return require('packer').startup(function(use)
     use 'williamboman/mason-lspconfig.nvim'
     use 'williamboman/mason.nvim'
     use 'j-hui/fidget.nvim'
-    use 'rust-lang/rust.vim'
 
     -- Auto completion
     use 'hrsh7th/nvim-cmp'
