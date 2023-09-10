@@ -54,9 +54,7 @@ local servers = {
   clangd = {},
   gopls = {},
   bufls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
+  rust_analyzer = {},
 
   sumneko_lua = {
     Lua = {
@@ -80,3 +78,11 @@ mason_lspconfig.setup_handlers {
 
 -- Turn on lsp status information
 require('fidget').setup()
+
+-- LSP formatting on save.
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = {"*.go", "*.rust"},
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
