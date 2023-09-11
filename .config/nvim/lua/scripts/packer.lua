@@ -10,12 +10,12 @@ return require('packer').startup(function(use)
     -- Theme / colors / appearance
     use 'folke/tokyonight.nvim'
     use 'folke/lsp-colors.nvim' -- provides compatibility for highlighting
-    use 'kyazdani42/nvim-web-devicons'
+    use 'nvim-tree/nvim-web-devicons'
     use 'lukas-reineke/indent-blankline.nvim'
 
     -- LSP
     use 'neovim/nvim-lspconfig'
-    use({"glepnir/lspsaga.nvim", branch = "main"})
+    use({"nvimdev/lspsaga.nvim"})
     use 'williamboman/mason-lspconfig.nvim'
     use 'williamboman/mason.nvim'
     use 'j-hui/fidget.nvim'

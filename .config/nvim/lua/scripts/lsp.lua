@@ -25,7 +25,7 @@ local on_attach = function(_, bufnr)
   end
 
   nmap('H', '<cmd>Lspsaga hover_doc<CR>', '[H]over docs')
-  nmap('fi', '<cmd>Lspsaga lsp_finder<CR>', '[f][i]nd references')
+  nmap('fi', '<cmd>Lspsaga finder<CR>', '[f][i]nd references')
   nmap('pd', '<cmd>Lspsaga peek_definition<CR>', '[p]eek [d]efinition')
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
