@@ -18,7 +18,7 @@ return require('packer').startup(function(use)
     use({"nvimdev/lspsaga.nvim"})
     use 'williamboman/mason-lspconfig.nvim'
     use 'williamboman/mason.nvim'
-    use 'j-hui/fidget.nvim'
+    use {'j-hui/fidget.nvim', tag = 'legacy'}
 
     -- Auto completion
     use 'hrsh7th/nvim-cmp'
