@@ -11,7 +11,7 @@ return require('packer').startup(function(use)
     use 'folke/tokyonight.nvim'
     use 'folke/lsp-colors.nvim' -- provides compatibility for highlighting
     use 'nvim-tree/nvim-web-devicons'
-    use 'lukas-reineke/indent-blankline.nvim'
+    use {'lukas-reineke/indent-blankline.nvim', tag = 'v2.20.8'}
 
     -- LSP
     use 'neovim/nvim-lspconfig'
@@ -40,7 +40,7 @@ return require('packer').startup(function(use)
     use 'akinsho/git-conflict.nvim'
 
     -- Misc / productivity
-    use {'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = { {'nvim-lua/plenary.nvim'}}}
+    use {'nvim-telescope/telescope.nvim', tag = '0.1.4', requires = { {'nvim-lua/plenary.nvim'}}}
     use { "nvim-telescope/telescope-file-browser.nvim" }
     use {'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons', opt = true }}
     use 'ahmedkhalf/project.nvim'

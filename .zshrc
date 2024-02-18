@@ -85,7 +85,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#475759"
 
 # git shortcuts
 alias ga=git add
-alias gc=git commit
+alias gc=git commit -S --signoff
 alias gp=git push
 
 # Kubernetes
@@ -101,12 +101,6 @@ export GOPRIVATE="github.com/arangodb-managed/*"
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/mayankshah/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mayankshah/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/mayankshah/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mayankshah/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
 source ~/Desktop/mango/env/cmd.sh
 export PATH=/Users/mayankshah/go/bin/:$PATH
 export PATH=/usr/local/neovim/bin/:$PATH
@@ -114,3 +108,12 @@ alias vi=nvim
 alias vim=nvim
 
 export XDG_CONFIG_HOME="/Users/mayankshah/.config"
+
+source /Users/mayankshah/.docker/init-zsh.sh || true # Added by Docker Desktop
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/mayankshah/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mayankshah/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/mayankshah/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mayankshah/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="/opt/homebrew/opt/node@16/bin:$PATH"

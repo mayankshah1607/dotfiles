@@ -55,7 +55,7 @@ local servers = {
   gopls = {},
   bufls = {},
   rust_analyzer = {},
-
+  autotools = {},
   sumneko_lua = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -81,7 +81,7 @@ require('fidget').setup()
 
 -- LSP formatting on save.
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = {"*.go", "*.rs"},
+  pattern = {"*.go", "*.rs", "*.c", ".cpp"},
   callback = function()
     vim.lsp.buf.format()
   end,
