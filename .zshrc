@@ -98,7 +98,6 @@ export GOROOT=/usr/local/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOROOT/bin
-export GOPRIVATE="github.com/arangodb-managed/*"
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
@@ -110,5 +109,3 @@ alias vim=nvim
 export XDG_CONFIG_HOME="$HOME/.config"
 
 alias config="git --git-dir=$HOME/dotfiles --work-tree=$HOME"
-
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
