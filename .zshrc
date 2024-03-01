@@ -109,3 +109,4 @@ alias vim=nvim
 export XDG_CONFIG_HOME="$HOME/.config"
 
 alias config="git --git-dir=$HOME/dotfiles --work-tree=$HOME"
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
