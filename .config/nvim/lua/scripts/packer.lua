@@ -47,4 +47,5 @@ return require('packer').startup(function(use)
     use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
     use {"akinsho/toggleterm.nvim", tag = "*"}
     use 'folke/neodev.nvim'
+    use 'github/copilot.vim'
 end)
