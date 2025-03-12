@@ -11,7 +11,7 @@ return require('packer').startup(function(use)
     use 'folke/tokyonight.nvim'
     use 'folke/lsp-colors.nvim' -- provides compatibility for highlighting
     use 'nvim-tree/nvim-web-devicons'
-    use {'lukas-reineke/indent-blankline.nvim', tag = 'v2.20.8'}
+    use {'lukas-reineke/indent-blankline.nvim'}
 
     -- LSP
     use 'neovim/nvim-lspconfig'
