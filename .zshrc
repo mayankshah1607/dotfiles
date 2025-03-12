@@ -93,11 +93,11 @@ alias gp=git push
 alias k=kubectl
 
 # Go
-export GOPATH=$HOME/go
-export GOROOT=/usr/local/go
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOPATH
-export PATH=$PATH:$GOROOT/bin
+# export GOPATH=$HOME/go
+# export GOROOT=/usr/local/go
+# export GOBIN=$GOPATH/bin
+# export PATH=$PATH:$GOPATH
+# export PATH=$PATH:$GOROOT/bin
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
@@ -110,3 +110,19 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 alias config="git --git-dir=$HOME/dotfiles --work-tree=$HOME"
 source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/mayank/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mayank/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/mayank/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mayank/google-cloud-sdk/completion.zsh.inc'; fi
+
+export GPG_TTY=$TTY
+
+# pnpm
+export PNPM_HOME="/Users/mayank/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
